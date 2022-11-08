@@ -1,0 +1,3 @@
+NECESITAN ABRIR UN VENV ANTES DE QUE LES FUNCIONE EL CODIGO.
+
+Este es el codigo base, descarguenlo y intenten hacer apps que complementen a este, si en la app que desarrollaron cambiaron algun archivo de la carpeta kalemder o register(en teoria esta no la deberian tocar a menos que quieran cambiar como se ve, avisen. 

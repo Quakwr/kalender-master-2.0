@@ -1,0 +1,20 @@
+{% extends 'header.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% block content1 %}
+        <h2>Gastos</h2>
+    {% endblock %}
+<form class="form-content" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.nombre|as_crispy_field }}
+    </div>
+    <div class="form-group">
+        {{ form.link|as_crispy_field }}
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary mt-4">Subir gasto</button>
+    </div>
+</form>
+{% endblock %}

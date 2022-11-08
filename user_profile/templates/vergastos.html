@@ -1,0 +1,32 @@
+{% extends 'header.html' %}
+{% block content %}
+    {% block content1 %}
+        <h2>Gastos</h2>
+        <p>
+            <a href="/subirgasto">Subir gasto</a>
+        </p>
+    {% endblock %}
+        <table class="table table-striped table-bordered dt-responsive nowrap" cellspacing="10" aria-describedby="mydesc">
+        <thead>
+            <tr>
+                <th id="nombre">Nombre</th>
+                <th id="link">Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for Gasto in lista_gastos %}
+                <tr>
+                    <td>{{ Gasto.nombre }}</td>
+                    <td><a href = "{{ Gasto.link }} Gasto.pk" target="_blank">{{ Gasto.link }}</a></td>
+                    <td>
+                        <form method="POST" action="{% url 'borrarlink' Gasto.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
