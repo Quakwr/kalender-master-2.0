@@ -5,7 +5,7 @@ from .forms import NuevoGasto
 # Create your views here.
 
 def NuevoGastoView(request):
-	return render(request, 'acceso.html')
+	return render(request, 'vergastos.html')
 
 def subirgasto(request):
 	if request.method=="POST":
@@ -13,7 +13,7 @@ def subirgasto(request):
 		if form.is_valid():
 			instance = form.save(commit=False)
 			instance.save()
-			return redirect('acceso')
+			return redirect('vergastos')
 	else:
 		form=NuevoGasto()
 	return render(request, 'nuevogasto.html',{
