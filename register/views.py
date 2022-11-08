@@ -34,7 +34,7 @@ def login_request(request):
 			if user is not None:
 				login(request, user)
 				messages.info(request, f"Bienvenido, {username}.")
-				return redirect("acceso")
+				return redirect("mainpage")
 			else:
 				messages.error(request,"Usuario o contraseña inválidos.")
 		else:
