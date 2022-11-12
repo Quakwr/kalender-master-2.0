@@ -1,0 +1,10 @@
+<div class="container">
+
+	<b>Borrarndo"<span style="color: red;">{{item}}</span>" ¿Estas segur@ de querer hacerlo?<br>
+
+	<a class="btn btn-sm btn-success myButton" href="{% url 'calendario' %}" >No</a>
+
+	<form method="POST" action="">{% csrf_token %}
+		<input class="btn btn-sm btn-danger" type="submit" value="Si." name="Yes">
+	</form>
+</div>

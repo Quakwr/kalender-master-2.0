@@ -1,0 +1,24 @@
+{% extends 'header.html' %}
+{% block content %}
+<div class="container">
+	<form method="POST" action="/calendario/">
+		{% csrf_token %}
+		{{form}}
+		<input class="btn save" type="submit" name="save">
+	</form>
+	<div class="todo-list">
+	{% for task in tasks %}
+		<div class="item-row">
+            {% if task.hecho == True %}
+			<strike>{{task}}, {{task.fecha}}</strike>
+			{% else %}
+			<span>{{task}}</span>
+            <span style="float: right;" class="timer"><b>Fecha de pago en:</b> {{ task.fecha|timeuntil }}</span>
+            {% endif %}
+            <a class="btn btn-sm btn-light" href="{% url 'update_task' task.id %}">Hecho</a>
+            <a href="{% url 'borrar_fecha' task.id %}">Borrar</a>    
+        </div>
+	{% endfor %}
+	</div>
+</div>
+{% endblock %}

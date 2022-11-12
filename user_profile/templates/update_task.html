@@ -1,0 +1,17 @@
+<div class="container">
+
+
+	<p><a class="btn btn-sm btn-success" href="{% url 'calendario' %}" >Back to list</a></p>
+	<b>Update Task</b><p>
+
+	<form method="POST" action="">{% csrf_token %}
+		{{form}}
+		<input class="btn btn-sm btn-success" type="submit" value="Update" name="Update">
+	</form>
+
+<b></b>
+
+
+
+
+</div>

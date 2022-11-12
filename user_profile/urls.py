@@ -11,5 +11,7 @@ urlpatterns = [
     path('vergastos/', pviews.vergasto, name="vergastos"),
     path('subirgasto/', pviews.subirgasto, name="subirgasto"),
     path('vergastos/<int:pk>/',pviews.borrarlink, name="borrarlink"),
-    path('<int:año>/<str:mes>', views.mainpage_request, name='homepage')
+    path('calendario/', pviews.kalendar, name = 'calendario'),
+    path('update_task/<str:pk>/', pviews.actualizar_calendario, name="update_task"),
+    path('borrar_fecha/<str:pk>/', pviews.borrarfecha, name="borrar_fecha"),
 ]

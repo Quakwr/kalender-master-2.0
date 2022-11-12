@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Gasto
-from .forms import NuevoGasto
+from .models import Gasto, calendario
+from .forms import NuevoGasto, lista, actualizarform
 
 # Create your views here.
 
@@ -38,6 +38,42 @@ def borrarlink(request, pk):
         borrar.delete()
     return redirect('vergastos')
 	
-def calendario(request, año, mes):
-	nombre = {{user.username}}
-	return render(request, 'mainpage.html', {'nombre' : nombre })
+def kalendar(request):
+	queryset = calendario.objects.order_by('hecho','fecha')
+	form = lista()
+	if request.method =='POST':
+		form = lista(request.POST)
+		if form.is_valid():
+			form.save()
+		return redirect('/calendario/')
+	context = {
+		'tasks':queryset,
+		'form':form,
+		}
+	return render(request, 'calendario.html', context)
+
+def actualizar_calendario(request, pk):
+	queryset = calendario.objects.get(id=pk)
+	form = actualizarform(instance=queryset)
+	if request.method == 'POST':
+		form = actualizarform(request.POST, instance=queryset)
+		if form.is_valid():
+			form.save()
+			return redirect('/calendario/')
+
+	context = {
+		'form':form
+		}
+
+	return render(request, 'update_task.html', context)
+
+def borrarfecha(request, pk):
+	queryset = calendario.objects.get(id=pk)
+	if request.method == 'POST':
+		queryset.delete()
+		return redirect('/calendario/')
+
+	context = {
+		'item':queryset
+		}
+	return render(request, 'borrar_fecha.html', context)
